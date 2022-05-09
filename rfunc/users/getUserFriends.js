@@ -1,10 +1,11 @@
 let fetch = require('node-fetch');
 
-function getPlayerInfoByID(args) {
-    return fetch(`https://users.roblox.com/v1/users/${args}`).then(res => {
+function getFriends(user) {
+    return fetch(`https://friends.roblox.com/v1/users/${user}/friends`).then(res => {
         if(res.status === 200) {
-            return fetch(`https://users.roblox.com/v1/users/${args}`).then(n=>n.json()).then(body => {
-                return body
+            return fetch(`https://friends.roblox.com/v1/users/${user}/friends`).then(n=>n.json()).then(body => {
+                let output = {friendsCount: body.data.length, friends: body.data};
+                return output
             })
         } else {
             throw new Error('The user never existed.')
@@ -15,18 +16,18 @@ function getPlayerInfoByID(args) {
 module.exports = (user) => {
     if(!user) {
         throw new Error('You haven\'t specified the user argument yet')
-    }
+    };
     if(isNaN(user)) {
         return fetch(`https://api.roblox.com/users/get-by-username?username=${user}`).then(res => {
             if(res.status === 200) {
                 return fetch(`https://api.roblox.com/users/get-by-username?username=${user}`).then(n=>n.json()).then(body=>{
-                    return getPlayerInfoByID(body.Id)
+                    return getFriends(body.Id)
                 })
             } else {
                 throw new Error('The user never existed.')
             }
         })
     } else {
-        return getPlayerInfoByID(user)
+        return getFriends(user)
     }
 }
