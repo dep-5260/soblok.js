@@ -1,4 +1,4 @@
-let version = "0.0.3"
+let version = "0.0.31"
 let fetch = require('node-fetch');
 
 module.exports = {
@@ -15,5 +15,5 @@ module.exports = {
 fetch(`https://soblok.depdev.repl.co`).then(res=>res.text()).then(data => {
     if(!data) return console.log('[Soblok - Version Manager]: Failed to fetch the latest soblok version.');
     if(version === data) return;
-    console.log('[Soblok - Version Manager]: Please update your soblok package. ' + `Your version: ${version} and Lastest version: ${data} . Type "npm install soblok@latest" in shell/bash`)
+    throw new Error('[Soblok - Version Manager]: Please update your soblok package. ' + `Your version: ${version} and Lastest version: ${data} . Type "npm install soblok@latest" in shell/bash`)
 })
