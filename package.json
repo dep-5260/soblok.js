@@ -1,6 +1,6 @@
 {
   "name": "soblok",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "A package for roblox information.",
   "main": "main.js",
   "scripts": {
@@ -12,7 +12,13 @@
   },
   "keywords": [
     "roblox",
-    "info"
+    "info",
+    "js",
+    "wrapper",
+    "package",
+    "rblx",
+    "robux",
+    "rbx"
   ],
   "author": "\u0016dev-depdiscord",
   "license": "MIT",
