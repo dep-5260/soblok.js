@@ -1,4 +1,4 @@
-# soblok.js
+## soblok.js (Directory only for version 0.5)
 
 ### Soblok is an npm package based on Roblox. Soblok uses roblox's APIs to make soblok itself work.
 
